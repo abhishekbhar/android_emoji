@@ -25,6 +25,9 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.io.File;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class MainActivity extends AppCompatActivity {
 
 
@@ -33,27 +36,20 @@ public class MainActivity extends AppCompatActivity {
 
     public static final String FILE_PROVIDER_AUTHORITY = "com.abhibhr.android_emoji";
 
-    private ImageView mImageView;
-    private Button mEmojifyButton;
-    private FloatingActionButton mShareFab;
-    private FloatingActionButton mSaveFab;
-    private FloatingActionButton mClearFab;
-    private TextView mTitleTextView;
-    private String mTempPhotoPath;
-    private Bitmap mResultsBitmap;
+    @BindView(R.id.image_view) ImageView mImageView;
+    @BindView(R.id.emojify_button) Button mEmojifyButton;
+    @BindView(R.id.share_button) FloatingActionButton mShareFab;
+    @BindView(R.id.save_button) FloatingActionButton mSaveFab;
+    @BindView(R.id.clear_button) FloatingActionButton mClearFab;
+    @BindView(R.id.title_text_view) TextView mTitleTextView;
+    private  String mTempPhotoPath;
+    private  Bitmap mResultsBitmap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        mImageView     = findViewById(R.id.image_view);
-        mEmojifyButton = findViewById(R.id.emojify_button);
-        mShareFab      = findViewById(R.id.share_button);
-        mSaveFab       = findViewById(R.id.save_button);
-        mClearFab      = findViewById(R.id.clear_button);
-        mTitleTextView = findViewById(R.id.title_text_view);
-
+        ButterKnife.bind(this);
     }
 
     public void emojifyMe(View view){

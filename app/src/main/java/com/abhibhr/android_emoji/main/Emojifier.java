@@ -21,7 +21,7 @@ public class Emojifier {
     private static final double SMILING_PROB_THRESHOLD = .15;
     private static final double EYE_OPEN_PROB_THRESHOld = .5;
 
-    private static Bitmap detectFacesAndOverlayEmoji(Context context, Bitmap image){
+    public static Bitmap detectFacesAndOverlayEmoji(Context context, Bitmap image){
 //        Matrix matrix = new Matrix();
 //        matrix.postRotate(90);
 //        Canvas canvas = new Canvas(image);
