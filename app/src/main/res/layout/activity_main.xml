@@ -27,12 +27,13 @@
     tools:context=".main.MainActivity">
 
 
-
     <ImageView
         android:id="@+id/image_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="@dimen/view_margin"
+        android:layout_marginStart="@dimen/view_margin"
+        android:layout_marginTop="@dimen/view_margin"
+        android:layout_marginEnd="@dimen/view_margin"
         android:contentDescription="@string/imageview_description"
         android:scaleType="fitStart" />
 

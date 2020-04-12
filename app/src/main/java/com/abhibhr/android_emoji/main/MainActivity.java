@@ -47,12 +47,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mImageView     = (ImageView) findViewById(R.id.image_view);
-        mEmojifyButton = (Button) findViewById(R.id.emojify_button);
-        mShareFab      = (FloatingActionButton) findViewById(R.id.share_button);
-        mSaveFab       = (FloatingActionButton) findViewById(R.id.save_button);
-        mClearFab      = (FloatingActionButton) findViewById(R.id.clear_button);
-        mTitleTextView = (TextView) findViewById(R.id.title_text_view);
+        mImageView     = findViewById(R.id.image_view);
+        mEmojifyButton = findViewById(R.id.emojify_button);
+        mShareFab      = findViewById(R.id.share_button);
+        mSaveFab       = findViewById(R.id.save_button);
+        mClearFab      = findViewById(R.id.clear_button);
+        mTitleTextView = findViewById(R.id.title_text_view);
 
     }
 
@@ -130,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
         mClearFab.setVisibility(View.VISIBLE);
 
         mResultsBitmap = BitmapUtils.resamplePic(this, mTempPhotoPath);
-       Emojifier.detectFaces(this, mResultsBitmap);
+        mResultsBitmap = Emojifier.detectFacesAndOverlayEmoji(this, mResultsBitmap);
 
         mImageView.setImageBitmap(mResultsBitmap);
 

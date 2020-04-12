@@ -22,7 +22,7 @@ import java.util.Locale;
 
 public class BitmapUtils {
 
-    public static final String FILE_PROVIDER_AUTHORITY = "com.abhibhr.android_emoji.fileprovider";
+    private static final String FILE_PROVIDER_AUTHORITY = "com.abhibhr.android_emoji";
 
     static Bitmap resamplePic(Context context, String imagePath){
 
