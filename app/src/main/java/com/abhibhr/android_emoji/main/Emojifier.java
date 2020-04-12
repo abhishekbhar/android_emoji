@@ -4,8 +4,6 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-import android.graphics.Matrix;
-import android.util.Log;
 import android.util.SparseArray;
 import android.widget.Toast;
 
@@ -14,9 +12,9 @@ import com.google.android.gms.vision.Frame;
 import com.google.android.gms.vision.face.Face;
 import com.google.android.gms.vision.face.FaceDetector;
 
-public class Emojifier {
-    private static final String LOG_TAG = Emojifier.class.getSimpleName();
+import timber.log.Timber;
 
+public class Emojifier {
     private static final float EMOJI_SCALE_FACTOR = .9f;
     private static final double SMILING_PROB_THRESHOLD = .15;
     private static final double EYE_OPEN_PROB_THRESHOld = .5;
@@ -36,7 +34,7 @@ public class Emojifier {
         Frame imageFrame = new Frame.Builder().setBitmap(image).build();
         SparseArray<Face> faces = detector.detect(imageFrame);
 
-        Log.d(LOG_TAG, "detectFaces: number of faces = "+ faces.size());
+        Timber.d("detectFaces: number of faces = "+ faces.size());
         if (faces.size() == 0) {
             Toast.makeText(context, "No Image Found",Toast.LENGTH_SHORT).show();
         } else {
@@ -90,10 +88,10 @@ public class Emojifier {
     }
 
     private static Emoji whichEmoji(Face face){
-        Log.d(LOG_TAG, "getClassifications: smilingProb = " + face.getIsSmilingProbability());
-        Log.d(LOG_TAG, "getClassifications: leftEyeOpenProb = "
+        Timber.d("getClassifications: smilingProb = " + face.getIsSmilingProbability());
+        Timber.d("getClassifications: leftEyeOpenProb = "
                 + face.getIsLeftEyeOpenProbability());
-        Log.d(LOG_TAG, "getClassifications: rightEyeOpenProb = "
+        Timber.d("getClassifications: rightEyeOpenProb = "
                 + face.getIsRightEyeOpenProbability());
 
         boolean smiling = face.getIsSmilingProbability() > SMILING_PROB_THRESHOLD;
@@ -115,7 +113,7 @@ public class Emojifier {
             else emoji = Emoji.FROWN;
         }
 
-        Log.d(LOG_TAG, "whichEmoji: " + emoji.name());
+        Timber.d("whichEmoji: " + emoji.name());
         return emoji;
     }
 
